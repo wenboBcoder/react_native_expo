@@ -1,2 +1,2 @@
 # react_native_expo
-# build
+# init
