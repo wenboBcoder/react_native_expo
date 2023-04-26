@@ -1,28 +1,39 @@
 import { useState } from "react";
-import { StyleSheet, View, FlatList, Touchable } from "react-native";
+import { StyleSheet, View, FlatList, Button } from "react-native";
 
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput"
 export default function App() {
 
   const [courseGoals, setCourseGoals] = useState([])
+  const [isAddModal, setIsAddModal]=useState(false)
 
   const addGoalHandler = (goalTitle) => {
     // setCourseGoals([...courseGoals,enteredGoal])
+    if(goalTitle.length===0){
+      return;
+    }
     let obj = {
       id: parseInt(Math.random() * 10000).toString(),
       value: goalTitle
     }
     setCourseGoals(currentGoals => [...currentGoals, obj])
+    setIsAddModal(false)
     
   }
 
   const removeGoalHandler=(goalId)=>{
     setCourseGoals(currentGoals=>currentGoals.filter(goal=>goal.id!==goalId))
   }
+
+  const cancelGoalAdditionHandler=()=>{
+    setIsAddModal(false)
+  }
+
   return (
     <View style={styles.screen}>
-      <GoalInput onAddGoal={addGoalHandler}/>
+      <Button title="Add New Goal" onPress={()=>setIsAddModal(true)}></Button>
+      <GoalInput visible={isAddModal} onAddGoal={addGoalHandler} onCancel={cancelGoalAdditionHandler}/>
       {
         /* 
         <ScrollView>
