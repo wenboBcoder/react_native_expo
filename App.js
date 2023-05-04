@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState , useCallback } from "react";
 import { StyleSheet, View, } from "react-native";
-import * as Font from 'expo-font'
-import AppLoading from 'expo-app-loading';
+
+import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
 
@@ -11,23 +11,26 @@ import StartGameScreen from "./Screen/StartGameScreen";
 import GameScreen from "./Screen/GameScreen";
 import GameOverScreen from "./Screen/GameOverScreen";
 
-const fetchFonts=()=>{
-  return Font.loadAsync({
-    'opensans':require('./assets/fonts/OpenSans-Regular.ttf'),
-    'opensans-bold':require('./assets/fonts/OpenSans-Bold.ttf'),
-  })
-}
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [userNumber,setUserNumber]=useState()
   const [guessRounds,setGuessRounds]=useState(0)
-  const [dataLoaded ,setDataLoaded]=useState(false)
+  // const [dataLoaded ,setDataLoaded]=useState(false)
 
-  if(!dataLoaded){//写在这里就想先加载在对页面进行渲染
-    return <AppLoading startAsync={fetchFonts} 
-                      onFinish={()=>setDataLoaded(true)}
-                      onError={err=>console.log(err)}
-                      />
+  const [fontsLoaded] = useFonts({
+    'opensans':require('./assets/fonts/OpenSans-Regular.ttf'),
+    'opensans-bold':require('./assets/fonts/OpenSans-Bold.ttf'),
+});
+
+const onLayoutRootView = useCallback(async () => {
+  if (fontsLoaded) {
+    await SplashScreen.hideAsync();
+  }
+}, [fontsLoaded]);
+
+  if(!fontsLoaded){//写在这里就想先加载在对页面进行渲染
+    return null
   }
 
   const configureNewGameHandler=()=>{
@@ -52,7 +55,7 @@ export default function App() {
   }
   
   return (
-    <View style={styles.screen}>
+    <View style={styles.screen} onLayout={onLayoutRootView}>
       <Header title="Guess a Number"></Header>
       {content}
     </View>

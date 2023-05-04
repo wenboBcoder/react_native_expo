@@ -3,7 +3,7 @@
     "name": "react_native_expo",
     "slug": "react_native_expo",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
