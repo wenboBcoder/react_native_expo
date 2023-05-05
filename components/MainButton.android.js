@@ -27,11 +27,13 @@ const styles = StyleSheet.create({
         backgroundColor:color.primary,
         paddingVertical:12,
         paddingHorizontal:15,
-        borderRadius:25
+        borderRadius:25,
+
     },
     buttonText:{
         color:'white',
         fontFamily:'opensans',
         fontSize:18,
+
     }
 });
