@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Button, TouchableWithoutFeedback, Keyboard, Alert,Dimensions, ScrollView, KeyboardAvoidingView, TextInput} from "react-native";
+import { StyleSheet, View, Text, Button, TouchableWithoutFeedback, Keyboard, Alert,Dimensions, ScrollView, KeyboardAvoidingView,} from "react-native";
 
 import Card from "../components/Card";
 import Input from "../components/Input";
@@ -10,7 +10,7 @@ import MainButtonfrom from "../components/MainButton";
 
 
 export default function StartGameScreen(props) {
-  const [enteredValue, setEnteredValue] = useState("");
+  const [enteredValue, setEnteredValue] = useState();
   const [confirmed, setConfirmed]=useState(false)
   const [selectedNumber,setSelectedNumber]=useState()
   const [buttonWidth,setButtonWidth]=useState(Dimensions.get('window').width/3)
@@ -62,10 +62,7 @@ export default function StartGameScreen(props) {
       <Text style={styles.title}>StartGameScreen</Text>
       <Card style={styles.inputContainer}>
         <BodyText>Select a Number</BodyText>
-        <Text>1</Text>
-        <View style={styles.input}>
-        <Input
-          
+        <Input style={styles.input}
           blurOnSumit
           autoCapitalize="none"
           autoCorrect={false}
@@ -73,9 +70,7 @@ export default function StartGameScreen(props) {
           maxLength={2}
           onChangeText={numberInputHandler}
           value={enteredValue}
-        ></Input>
-      </View>
-        <Text>1</Text>
+        />
         <View style={styles.buttonContainer}>
           <View style={{width:buttonWidth}}>
             <MainButtonfrom onPress={resetInputHandler} style={{backgroundColor:color.accent}} >Reset</MainButtonfrom>
@@ -106,7 +101,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '80%',
     minWidth:300,
-    justifyContent:'space-around',
     alignItems:'center'
     
   },

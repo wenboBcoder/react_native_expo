@@ -29,7 +29,7 @@ const styles=StyleSheet.create({
       borderBottomColor:'tansparent',
     },
     headertitle:{
-        color:Platform.OS='ios'?color.primary:'white',
+        color:Platform.OS=='ios'?color.primary:'white',
         fontSize:18,
     },
 })
