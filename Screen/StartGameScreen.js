@@ -73,10 +73,10 @@ export default function StartGameScreen(props) {
         />
         <View style={styles.buttonContainer}>
           <View style={{width:buttonWidth}}>
-            <MainButtonfrom onPress={resetInputHandler} style={{backgroundColor:color.accent}} >Reset</MainButtonfrom>
+            <MainButtonfrom onPress={resetInputHandler} style={{backgroundColor:color.accent,alignItems:'center'}} >Reset</MainButtonfrom>
           </View>
           <View style={{width:buttonWidth}}>
-            <MainButtonfrom onPress={confirmInputHandler}  style={{backgroundColor:color.primary}}>Confirm</MainButtonfrom>
+            <MainButtonfrom onPress={confirmInputHandler}  style={{backgroundColor:color.primary,alignItems:'center'}} >Confirm</MainButtonfrom>
           </View>
         </View>
       </Card>

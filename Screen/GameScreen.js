@@ -102,7 +102,9 @@ export default function GameScreen(props) {
       ...curPastGuesses,
     ]);
   };
-  if (availableDeviceHeight < 500) {
+  console.log('height',Dimensions.get("window").height)
+  console.log('trueORfalse',typeof Dimensions.get("window").height)
+  if (availableDeviceHeight <= 550) {
     return (
       <View style={styles.screen}>
         <Text style={defaultStyles.title}>Opponent's Guess</Text>

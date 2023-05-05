@@ -34,6 +34,5 @@ const styles = StyleSheet.create({
         color:'white',
         fontFamily:'opensans',
         fontSize:18,
-
     }
 });
